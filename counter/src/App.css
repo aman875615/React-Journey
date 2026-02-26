@@ -1,0 +1,25 @@
+#root {
+  max-width: 1280px;
+  margin: 0 auto;
+  padding: 2rem;
+  text-align: center;
+  justify-content: center;
+}
+
+.light {
+  background-color: white;
+  color: black;
+  height: 100vh;
+  text-align: center;
+  padding-top: 100px;
+  transition: 0.4s;
+}
+
+.dark {
+  background-color: black;
+  color: white;
+  height: 100vh;
+  text-align: center;
+  padding-top: 100px;
+  transition: 0.4s;
+}

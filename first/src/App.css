@@ -1,0 +1,8 @@
+body{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+  font-family: 'Times New Roman', Times, serifon;
+  font-size: 8rem;
+}
