@@ -1,17 +1,49 @@
-import { useState } from 'react'
-import reactLogo from './assets/react.svg'
-import viteLogo from './assets/vite.svg'
-import heroImg from './assets/hero.png'
+import {  useEffect, useState } from 'react'
+import {useDispatch} from 'react-redux'  
+import authService from './appwrite/auth'
+import {login,logout} from './store/authSlice'
 import './App.css'
 
 function App() {
-  console.log(import.meta.env.VITE_APPWRITE_ENDPOINT)
+ const [loading, setLoading] = useState(true);
+ const dispatch = useDispatch();
+ useEffect(() => {
+  const fetchUser = async () => {
+    try {
+      const userData = await authService.getCurrentUser();
+      if (userData) {
+        dispatch(login({userData}));
+      }
+      else{
+        dispatch(logout());
+      }
+    }
 
-  return (
-    <>
-      <h1>appwrite</h1>
-    </>
-  )
+      catch (error) {
+        console.error("Error fetching user:", error);
+      } finally {
+        setLoading(false);
+      }
+    };
+
+    fetchUser();
+  }, [dispatch]);
+
+
+
+  return !loading ? (
+    <div className="min-h-screen flex flex-wrap content-between bg-gray-400">
+
+      <div>
+        <Headers/>
+        <main>
+          todo 
+        </main>
+        <Footer/>
+      </div>
+      
+    </div>
+  ) : null
 }
 
 export default App
